@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'contador',
@@ -6,20 +6,30 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./output-property.component.css'],
   // outputs: ['mudouValor']
 })
-export class OutputPropertyComponent {
+export class OutputPropertyComponent implements OnInit {
 
   @Input() valor: number = 0; 
 
   @Output() mudouValor = new EventEmitter();
 
+  @ViewChild('campoInput') campoValorInput!: ElementRef;
+
   incrementa() {
-    this.valor++;
+    this.campoValorInput.nativeElement.value++;
     this.mudouValor.emit({novoValor: this.valor});
   }
 
   decrementa() {
-    this.valor--;
+    this.campoValorInput.nativeElement.value--;
     this.mudouValor.emit({novoValor: this.valor});
+  }
+
+  constructor() {
+    
+  }
+
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
 }
