@@ -1,0 +1,20 @@
+<p>diretiva-ngclass works!</p>
+
+<h1>
+  <i class="bi" 
+    [class.bi-heart]="!meuFavorito"
+    [class.bi-heart-fill]="meuFavorito"
+    (click)="onClick()">
+  </i>
+</h1>
+
+<h1>
+  <i class="bi" 
+    [ngClass]="{
+      'bi-heart': !meuFavorito,
+      'bi-heart-fill': meuFavorito,
+    }"
+    (click)="onClick()">
+  </i>
+</h1>
+
