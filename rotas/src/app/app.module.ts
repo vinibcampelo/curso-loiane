@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './app.routing.module';
 import { CursosModule } from './cursos/cursos.module';
+import { AlunosModule } from './alunos/alunos.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { CursosModule } from './cursos/cursos.module';
     BrowserAnimationsModule,
     MatSlideToggleModule,
     CursosModule,
+    AlunosModule,
     AppRoutingModule
   ],
   bootstrap: [AppComponent]

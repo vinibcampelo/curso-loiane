@@ -5,13 +5,13 @@ import { CursoNaoEncontradoComponent } from "./curso-nao-encontrado/curso-nao-en
 import { CursosService } from "./cursos.service";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-import { RouterModule } from "@angular/router";
+import { CursosRoutingModule } from "./cursos.routing.module";
 
 @NgModule({
   imports:[
     CommonModule,
     FormsModule,
-    RouterModule
+    CursosRoutingModule
   ],
   exports:[],
   declarations:[
