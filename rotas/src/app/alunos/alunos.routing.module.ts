@@ -5,10 +5,12 @@ import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
 import { AlunoFormComponent } from './aluno-form/aluno-form.component';
 
 const alunosRoutes = [
-  {path: 'alunos', component: AlunosComponent}, //To Do: Adicionar rotas filhas como children
-  {path: 'alunos/novo', component: AlunoFormComponent},
-  {path: 'alunos/:id', component: AlunoDetalheComponent},
-  {path: 'alunos/:id/edit', component: AlunoFormComponent}
+  {path: 'alunos', component: AlunosComponent, children: [
+    {path: 'novo', component: AlunoFormComponent},
+    {path: ':id', component: AlunoDetalheComponent},
+    {path: ':id/edit', component: AlunoFormComponent}
+  ]},
+
 ];
 
 @NgModule({
