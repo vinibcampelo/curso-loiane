@@ -17,7 +17,7 @@ import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
   declarations: [
     AlunosComponent,
     AlunoFormComponent,
-    AlunoDetalheComponent,
+    AlunoDetalheComponent
   ],
   providers: [
     AlunosService

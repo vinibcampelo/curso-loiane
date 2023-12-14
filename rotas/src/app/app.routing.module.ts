@@ -5,6 +5,7 @@ import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
 
 const appRoutes: Routes = [
+  {path: 'cursos', loadChildren:() => import('./cursos/cursos.module').then(mod => mod.CursosModule)},
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent }
 ]

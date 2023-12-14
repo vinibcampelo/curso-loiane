@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './app.routing.module';
-import { CursosModule } from './cursos/cursos.module';
 import { AlunosModule } from './alunos/alunos.module';
 
 
@@ -24,7 +23,6 @@ import { AlunosModule } from './alunos/alunos.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
-    CursosModule,
     AlunosModule,
     AppRoutingModule
   ],
