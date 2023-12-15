@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './app.routing.module';
+import { AuthService } from './login/auth.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,9 @@ import { AppRoutingModule } from './app.routing.module';
     BrowserAnimationsModule,
     MatSlideToggleModule,
     AppRoutingModule
+  ],
+  providers:[
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
