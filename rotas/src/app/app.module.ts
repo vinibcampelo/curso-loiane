@@ -8,8 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './app.routing.module';
-import { AlunosModule } from './alunos/alunos.module';
-
 
 @NgModule({
   declarations: [
@@ -23,7 +21,6 @@ import { AlunosModule } from './alunos/alunos.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
-    AlunosModule,
     AppRoutingModule
   ],
   bootstrap: [AppComponent]

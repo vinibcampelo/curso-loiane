@@ -27,7 +27,7 @@ export class CursoDetalheComponent {
         this.id = params['id'];
         this.curso = this.cursosService.getCurso(this.id)
         if(this.curso == null) {
-          this.router.navigate(['naoEncontrado', this.id])
+          this.router.navigate(['cursos/naoEncontrado'])
         }
     })
   }
