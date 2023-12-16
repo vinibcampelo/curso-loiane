@@ -2,14 +2,14 @@
 
 <div class="row">
   <div class="input-field col s6">
-    <input id="usuario" type="text" class="validate">
+    <input [(ngModel)]="usuario.nome" id="usuario" type="text" class="validate">
     <label class="active" for="usuario">Usuario</label>
   </div>
 </div>
 
 <div class="row">
   <div class="input-field col s6">
-    <input id="senha" type="password" class="validate">
+    <input [(ngModel)]="usuario.senha" id="senha" type="password" class="validate">
     <label class="active" for="senha">Senha</label>
   </div>
 </div>
