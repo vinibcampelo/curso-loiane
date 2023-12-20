@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app.routing.module';
 import { AuthService } from './login/auth.service';
 import { FormsModule } from '@angular/forms';
-import { AuthGuard } from './guards/auth.guard.service';
+import { AuthGuard } from './guards/auth.guard';
 import { CursosGuard } from './guards/cursos.guard';
 
 @NgModule({
