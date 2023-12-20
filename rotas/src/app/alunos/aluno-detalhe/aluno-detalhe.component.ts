@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { AlunosService } from "../alunos.service";
+import { Aluno } from "../aluno";
 
 
 @Component({
@@ -27,12 +28,21 @@ export class AlunoDetalheComponent  implements OnInit, OnDestroy{
   }
 
   ngOnInit(){
-    this.inscricao = this.route.params.subscribe(
-      (params: any) => {
-        this.id = params['id'];
-        console.log(this.id)
-        this.aluno = this.alunoService.getAluno(this.id)
-    })
+    // this.inscricao = this.route.params.subscribe(
+    //   (params: any) => {
+    //     this.id = params['id'];
+    //     console.log(this.id)
+    //     this.aluno = this.alunoService.getAluno(this.id)
+    // })
+
+    console.log("ngOnInit: AlunoDetalheComponent")
+
+    this.inscricao = this.route.data.subscribe(
+      (info) => {
+        console.log("Recebendo a informação do AlunoDetalheResolve ")
+        this.aluno = info['aluno'];
+      }
+    );
   }
 
   ngOnDestroy() {
