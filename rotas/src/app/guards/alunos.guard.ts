@@ -1,15 +1,13 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot} from "@angular/router";
+import { RouterStateSnapshot} from "@angular/router";
 import { Observable } from "rxjs";
 
 @Injectable({
   providedIn:"root"
 })
-export class AlunosGuard implements CanActivateChild {
+export class AlunosGuard {
 
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean | Observable<boolean> {
+  canActivateChild(state: RouterStateSnapshot): boolean | Observable<boolean> {
       console.log("AlunosGuard: Guarda de rota filha");
 
       if(state.url.includes('edit')) {

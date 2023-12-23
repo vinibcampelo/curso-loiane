@@ -7,13 +7,9 @@ import { IFormCanDeactivate } from "../guards/iform.candeactivate";
 @Injectable({
   providedIn:"root"
 })
-export class AlunosDeactivateGuard implements CanDeactivate<IFormCanDeactivate> {
+export class AlunosDeactivateGuard {
 
-  canDeactivate(
-    component: IFormCanDeactivate,
-    route: ActivatedRouteSnapshot, 
-    state: RouterStateSnapshot, 
-  ): boolean | Observable<boolean> {
+  canDeactivate(component: IFormCanDeactivate): boolean | Observable<boolean> {
     console.log("Rota desativada")
     return component.podeDesativar();
   }

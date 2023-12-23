@@ -1,17 +1,13 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { UrlTree } from "@angular/router";
 import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
-export class CursosGuard implements CanActivateChild {
+export class CursosGuard {
 
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-    ): boolean | Observable<boolean>| Promise<boolean | UrlTree> {
-    
+  canActivateChild(): boolean | Observable<boolean>| Promise<boolean | UrlTree> {
       console.log("Guarda de rota filha")
       return true;
   }
