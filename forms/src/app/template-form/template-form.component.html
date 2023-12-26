@@ -1,8 +1,36 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="was-validated">
+
+  <div class="mb-3">
+    <label for="nome" class="form-label">nome</label>
+    <input class="form-control" id="validationName" placeholder="Nome obrigatório"
+     name="nome" [(ngModel)]="usuario.nome" #nome="ngModel" required>
+    <div *ngIf="nome.touched" class="invalid-feedback">
+      Favor informar o nome
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Endereço de email</label>
+    <input class="form-control" id="validationEmail" placeholder="E-mail obrigatório"
+     required>
+    <div class="invalid-feedback">
+      Favor informar o e-mail
+    </div>
+  </div>
+  
+  <div class="mb-3">
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </div>
+</form>
+
+<!-- <form #f="ngForm" (ngSubmit)="onSubmit(f)" was-validated>
   <div class="mb-3">
     <label for="nome" class="form-label">Nome</label>
     <input type="text" class="form-control" id="nome" placeholder="Nome" required
-    aria-describedby="Nome" name="nome" [ngModel]="usuario.nome">
+    aria-describedby="Nome" name="nome" [ngModel]="usuario.nome" #nome="ngModel">
+    <div class="invalid-feedback">
+      Favor informar o nome
+    </div>
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Endereço de email</label>
@@ -10,4 +38,4 @@
     name="email" [ngModel]="usuario.email">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</form> -->
