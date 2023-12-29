@@ -21,7 +21,8 @@
   <div class="col-sm-3" [ngClass]="aplicaValidacao(cep)">
     <label for="cep" class="col-form-label">CEP</label>
     <input type="text" class="form-control" id="cep" name="cep"
-    [(ngModel)]="usuario.cep" #cep="ngModel" required>
+    [(ngModel)]="usuario.endereco.cep" #cep="ngModel" 
+    (blur)="consultaCep(cep.value)" required>
     <div class="invalid-feedback">
       Favor informar um cep válido
     </div>
@@ -30,7 +31,7 @@
   <div class="col-sm-3" [ngClass]="aplicaValidacao(numero)">
     <label for="numero" class="col-form-label">Número</label>
     <input type="text" class="form-control" id="numero" name="numero"
-    [(ngModel)]="usuario.numero" #numero="ngModel" required>
+    [(ngModel)]="usuario.endereco.numero" #numero="ngModel" required>
     <div class="invalid-feedback">
       Favor informar um número válido
     </div>
@@ -39,13 +40,13 @@
   <div class="col-sm-6" [ngClass]="aplicaValidacao(complemento)">
     <label for="complemento" class="col-form-label">Complemento</label>
     <input type="text" class="form-control" id="complemento" name="complemento"
-    [(ngModel)]="usuario.complemento" #complemento="ngModel">
+    [(ngModel)]="usuario.endereco.complemento" #complemento="ngModel">
   </div>
 
   <div class="col-sm-12"[ngClass]="aplicaValidacao(rua)">
     <label for="rua" class="col-form-label">Rua</label>
-      <input class="form-control" id="validationName" type="text"
-      name="rua" [(ngModel)]="usuario.rua" #rua="ngModel" required disabled>
+      <input class="form-control" id="rua" type="text" name="rua"
+      [(ngModel)]="usuario.endereco.rua" #rua="ngModel" required disabled>
     <div class="invalid-feedback">
       Favor informar a rua
     </div>
@@ -54,7 +55,7 @@
   <div class="col-sm-5" [ngClass]="aplicaValidacao(bairro)">
     <label for="bairro" class="col-form-label">Bairro</label>
       <input class="form-control" id="validationName" type="text"
-      name="bairro" [(ngModel)]="usuario.bairro" #bairro="ngModel" required disabled>
+      name="bairro" [(ngModel)]="usuario.endereco.bairro" #bairro="ngModel" required disabled>
     <div class="invalid-feedback">
       Favor informar o bairro
     </div>
@@ -63,7 +64,7 @@
   <div class="col-sm-4" [ngClass]="aplicaValidacao(cidade)">
     <label for="cidade" class="col-form-label">Cidade</label>
       <input class="form-control" id="validationName" type="text"
-      name="cidade" [(ngModel)]="usuario.cidade" #cidade="ngModel" required disabled>
+      name="cidade" [(ngModel)]="usuario.endereco.cidade" #cidade="ngModel" required disabled>
     <div class="invalid-feedback">
       Favor informar o cidade
     </div>
@@ -72,7 +73,7 @@
   <div class="col-sm-3" [ngClass]="aplicaValidacao(estado)">
     <label for="estado" class="col-form-label">Estado</label>
       <input class="form-control" id="validationName" type="text"
-      name="estado" [(ngModel)]="usuario.estado" #estado="ngModel" disabled>
+      name="estado" [(ngModel)]="usuario.endereco.estado" #estado="ngModel" disabled>
     <div class="invalid-feedback">
       Favor informar o estado
     </div>
