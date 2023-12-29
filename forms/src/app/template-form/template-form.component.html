@@ -17,6 +17,7 @@
     </div>
   </div>
 
+<div class="row"ngModelGroup="endereco">
   <div class="col-sm-3" [ngClass]="aplicaValidacao(cep)">
     <label for="cep" class="col-form-label">CEP</label>
     <input type="text" class="form-control" id="cep" name="cep"
@@ -76,6 +77,7 @@
       Favor informar o estado
     </div>
   </div>
+</div>
 
   <div class="col-sm-12">
     <button class="btn btn-primary" type="submit" [disabled]="!f.valid">

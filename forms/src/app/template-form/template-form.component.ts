@@ -10,9 +10,16 @@ export class TemplateFormComponent {
   usuario: any = {
     nome: "",
     email: "",
-    cep: "",
-    numero: "",
-    complemento: "",
+    endereco: {
+      cep: "",
+      numero: "",
+      complemento: "",
+      rua: "",
+      bairro: "",
+      cidade: "",
+      estado: ""
+    }
+
   }
 
   onSubmit(form: any){
