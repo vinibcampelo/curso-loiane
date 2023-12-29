@@ -19,4 +19,18 @@ export class TemplateFormComponent {
     console.log(form);
   }
 
+  aplicaValidacao(campo: any) {
+    return {
+      'was-validated':  this.verificaInvalidTouched(campo) || this.verificaValidTouched(campo)
+    }
+  }
+
+  verificaInvalidTouched(campo: any):boolean {
+    return campo.invalid && campo.touched;
+  }
+
+  verificaValidTouched(campo: any): boolean {
+    return campo.valid && campo.touched;
+  }
+
 }
