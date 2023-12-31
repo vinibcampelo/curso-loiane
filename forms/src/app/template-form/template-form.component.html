@@ -22,7 +22,7 @@
     <label for="cep" class="col-form-label">CEP</label>
     <input type="text" class="form-control" id="cep" name="cep"
     [(ngModel)]="usuario.endereco.cep" #cep="ngModel" 
-    (blur)="consultaCep(cep.value)" required>
+    (blur)="consultaCep(cep.value, f)" required>
     <div class="invalid-feedback">
       Favor informar um cep válido
     </div>
@@ -46,7 +46,7 @@
   <div class="col-sm-12"[ngClass]="aplicaValidacao(rua)">
     <label for="rua" class="col-form-label">Rua</label>
       <input class="form-control" id="rua" type="text" name="rua"
-      [(ngModel)]="usuario.endereco.rua" #rua="ngModel" required disabled>
+      [(ngModel)]="usuario.endereco.rua" #rua="ngModel" required readonly>
     <div class="invalid-feedback">
       Favor informar a rua
     </div>
@@ -55,7 +55,7 @@
   <div class="col-sm-5" [ngClass]="aplicaValidacao(bairro)">
     <label for="bairro" class="col-form-label">Bairro</label>
       <input class="form-control" id="validationName" type="text"
-      name="bairro" [(ngModel)]="usuario.endereco.bairro" #bairro="ngModel" required disabled>
+      name="bairro" [(ngModel)]="usuario.endereco.bairro" #bairro="ngModel" required readonly>
     <div class="invalid-feedback">
       Favor informar o bairro
     </div>
@@ -64,7 +64,7 @@
   <div class="col-sm-4" [ngClass]="aplicaValidacao(cidade)">
     <label for="cidade" class="col-form-label">Cidade</label>
       <input class="form-control" id="validationName" type="text"
-      name="cidade" [(ngModel)]="usuario.endereco.cidade" #cidade="ngModel" required disabled>
+      name="cidade" [(ngModel)]="usuario.endereco.cidade" #cidade="ngModel" required readonly>
     <div class="invalid-feedback">
       Favor informar o cidade
     </div>
@@ -73,7 +73,7 @@
   <div class="col-sm-3" [ngClass]="aplicaValidacao(estado)">
     <label for="estado" class="col-form-label">Estado</label>
       <input class="form-control" id="validationName" type="text"
-      name="estado" [(ngModel)]="usuario.endereco.estado" #estado="ngModel" disabled>
+      name="estado" [(ngModel)]="usuario.endereco.estado" #estado="ngModel" readonly>
     <div class="invalid-feedback">
       Favor informar o estado
     </div>
