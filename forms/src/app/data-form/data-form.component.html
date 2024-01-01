@@ -1,1 +1,24 @@
-<p>data-form works!</p>
+<form class="row g-2 " [formGroup]="formulario">
+  <div class="col-sm-12">
+    <label for="nome" class="col-form-label">Nome</label>
+      <input class="form-control" id="validationName" placeholder="Nome" type="text" formControlName="nome" required>
+    <div class="invalid-feedback">
+      Favor informar o nome
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <label for="email" class="col-form-label">Email</label>
+    <input class="form-control" id="validationEmail" placeholder="nome@email.com" type="email" formControlName="email" required>
+    <div class="invalid-feedback">
+      Favor informar um e-mail válido
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <button class="btn btn-primary" type="submit">
+      Submit
+    </button>
+  </div>
+  <app-form-debug [form]="formulario"></app-form-debug>
+</form>
