@@ -45,11 +45,12 @@ export class DataFormComponent implements OnInit {
 
   aplicaValidacao(campo: any) {
     const campoForm = this.formulario.get(campo);
-    console.log(campoForm);
-    console.log(this.verificaInvalidTouched(campo) || this.verificaValidTouched(campo));
-    return {
-      'was-validated':  this.verificaInvalidTouched(campoForm) || this.verificaValidTouched(campoForm)
+    if (this.verificaInvalidTouched(campoForm)) {
+      return 'is-invalid'
+    } else if(this.verificaValidTouched(campoForm)) {
+      return 'is-valid'
     }
+    return ''    
   }
 
   verificaInvalidTouched(campo: any):boolean {
@@ -58,6 +59,18 @@ export class DataFormComponent implements OnInit {
 
   verificaValidTouched(campo: any): boolean {
     return campo.valid && campo.touched;
+  }
+
+  validaEmail() {
+    const emailForm = this.formulario.get('email');
+    console.log(emailForm?.errors);
+    
+    if(emailForm?.errors) {
+      console.log(emailForm?.errors['email']);
+      
+      return emailForm.errors['email'] && emailForm.touched
+    }
+    return false;
   }
 
 
