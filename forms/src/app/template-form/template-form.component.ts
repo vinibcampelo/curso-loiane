@@ -44,7 +44,6 @@ export class TemplateFormComponent {
   }
 
   consultaCep(cep: string, form: any) {
-    console.log(cep);
     cep = cep.replace(/\D/g, '');
 
     if(cep != "") {

@@ -22,7 +22,8 @@
   <div class="row" formGroupName="endereco">
     <div class="col-sm-3">
       <label for="cep" class="col-form-label">CEP</label>
-      <input type="text" class="form-control" [ngClass]="aplicaValidacao('endereco.cep')" id="cep" formControlName="cep">
+      <input type="text" class="form-control" [ngClass]="aplicaValidacao('endereco.cep')"
+      (blur)="consultaCep()" id="cep" formControlName="cep">
       <div class="invalid-feedback">
         Favor informar um cep válido
       </div>
