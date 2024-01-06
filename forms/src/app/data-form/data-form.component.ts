@@ -21,7 +21,16 @@ export class DataFormComponent implements OnInit {
 
     this.formulario = formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      email: [null, [Validators.required, Validators.email]]
+      email: [null, [Validators.required, Validators.email]],
+      endereco: this.formBuilder.group({
+        cep: [null, [Validators.required]],
+        numero: [null, [Validators.required]],
+        complemento: [null],
+        rua: [null, [Validators.required]],
+        bairro: [null, [Validators.required]],
+        cidade: [null, [Validators.required]],
+        estado: [null, [Validators.required]],
+      })
     });
   }
 
@@ -30,7 +39,6 @@ export class DataFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.formulario.value);
     this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
     .subscribe({
       next: (dados) => console.log(dados),
@@ -43,7 +51,7 @@ export class DataFormComponent implements OnInit {
     this.formulario.reset()
   }
 
-  aplicaValidacao(campo: any) {
+  aplicaValidacao(campo: string) {
     const campoForm = this.formulario.get(campo);
     if (this.verificaInvalidTouched(campoForm)) {
       return 'is-invalid'
@@ -63,11 +71,7 @@ export class DataFormComponent implements OnInit {
 
   validaEmail() {
     const emailForm = this.formulario.get('email');
-    console.log(emailForm?.errors);
-    
-    if(emailForm?.errors) {
-      console.log(emailForm?.errors['email']);
-      
+    if(emailForm?.errors) {      
       return emailForm.errors['email'] && emailForm.touched
     }
     return false;
