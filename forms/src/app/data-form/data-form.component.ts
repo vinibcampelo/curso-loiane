@@ -39,12 +39,30 @@ export class DataFormComponent implements OnInit {
   }
 
   onSubmit(){
-    this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
-    .subscribe({
-      next: (dados) => console.log(dados),
-      error: (error) => alert("Algo não esperado ocorreu"),
-      complete: () => this.formulario.reset()
-  });
+    if(this.formulario.valid) {
+      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+      .subscribe({
+        next: (dados) => console.log(dados),
+        error: (error) => alert("Algo não esperado ocorreu"),
+        complete: () => this.formulario.reset()
+      });
+    } else {
+      console.log('formulari invalido');
+      // this.formulario.markAllAsTouched();
+      this.verificaValidacoesForm(this.formulario)
+    }
+  }
+
+  verificaValidacoesForm(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(campo => {
+      console.log(campo);
+      const controle = formGroup.get(campo);
+      controle?.markAsTouched();
+
+      if(controle instanceof FormGroup) {
+        this.verificaValidacoesForm(controle)
+      }
+    });
   }
 
   resetar() {

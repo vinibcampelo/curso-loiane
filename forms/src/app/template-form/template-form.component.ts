@@ -71,7 +71,6 @@ export class TemplateFormComponent {
     //   }
     // });
 
-    console.log(formulario);
     
     formulario.form.patchValue({
       endereco: {
