@@ -12,7 +12,7 @@ import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 })
 export class DataFormComponent implements OnInit {
   formulario: FormGroup;
-  estados: EstadoBr[] = [];
+  estados: EstadoBr[] =  [];
 
   constructor(
     private http: HttpClient,
@@ -46,6 +46,8 @@ export class DataFormComponent implements OnInit {
       this.estados.push(dados);
       console.log(dados);
     });
+    console.log(this.estados);
+  
   }
 
   onSubmit(){

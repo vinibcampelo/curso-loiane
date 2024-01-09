@@ -68,7 +68,9 @@
   
     <div class="col-sm-3">
       <label for="estado" class="col-form-label">Estado</label>
-        <input class="form-control" [ngClass]="aplicaValidacao('endereco.estado')" id="estado" type="text" formControlName="estado">
+        <select class="form-control" [ngClass]="aplicaValidacao('endereco.estado')" id="estado" formControlName="estado">
+          <option *ngFor="let estado of estados" value="estado.sigla">{{ estado.nome }}</option>
+        </select>
       <div class="invalid-feedback">
         Favor informar o estado
       </div>
