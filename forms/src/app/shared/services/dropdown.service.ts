@@ -28,7 +28,13 @@ export class DropdownService {
       {nome: 'javascript', desc: 'JavaScript'},
       {nome: 'php', desc: 'PHP'},
       {nome: 'ruby', desc: 'Ruby'},
+    ]
+  }
 
+  getNewsLetter() {
+    return [
+      {valor:'s', desc: 'Sim'},
+      {valor:'n', desc: 'Não'}
     ]
   }
 }
