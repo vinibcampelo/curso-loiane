@@ -69,7 +69,7 @@
     <div class="col-sm-3">
       <label for="estado" class="col-form-label">Estado</label>
         <select class="form-control" [ngClass]="aplicaValidacao('endereco.estado')" id="estado" formControlName="estado">
-          <option *ngFor="let estado of estados | async" value="estado.sigla">{{ estado.nome }}</option>
+          <option *ngFor="let estado of estados | async" [value]="estado.sigla">{{ estado.nome }}</option>
         </select>
       <div class="invalid-feedback">
         Favor informar o estado
