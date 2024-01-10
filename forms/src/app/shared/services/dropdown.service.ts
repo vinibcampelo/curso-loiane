@@ -11,7 +11,6 @@ export class DropdownService {
   constructor(private http: HttpClient) { }
 
   getEstadosBr(): Observable<any> {
-    return this.http.get('assets/dados/estadosbr.json')
-    .pipe(map(res => res));
+    return this.http.get('assets/dados/estadosbr.json');
   }
 }
