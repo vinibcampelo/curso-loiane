@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br.model';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
@@ -55,6 +55,10 @@ export class DataFormComponent implements OnInit {
     return this.formBuilder.array(values);
   }
 
+  getFrameworksControls() {
+    return this.formulario.get('frameworks') ? (<FormArray>this.formulario.get('frameworks')).controls : null;
+  }
+
   ngOnInit(): void {
     // this.dropdownService.getEstadosBr()
     //   .subscribe(dados => this.estados = dados);
@@ -66,8 +70,17 @@ export class DataFormComponent implements OnInit {
   }
 
   onSubmit(){
+    let valueSubmit = Object.assign({}, this.formulario.value)
+    valueSubmit = Object.assign(valueSubmit, {
+      frameworks: valueSubmit.frameworks
+      .map((v: any, i: any) => v ? this.frameworks[i] : null)
+      .filter((v: any) => v !== null)
+    })
+
+    console.log(valueSubmit)
+
     if(this.formulario.valid) {
-      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+      this.http.post('https://httpbin.org/post', JSON.stringify(valueSubmit))
       .subscribe({
         next: (dados) => console.log(dados),
         error: (error) => alert("Algo não esperado ocorreu"),
