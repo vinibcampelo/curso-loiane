@@ -106,6 +106,17 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="checkbox form-check form-check-inline">
+        <input class="form-check-input" formControlName="termos"[ngClass]="aplicaValidacao('termos')" type="checkbox" id="termos">
+        <label class="form-check-label" >Aceito os termos</label>
+        <div class="invalid-feedback">
+          Por favor, aceite os termos.
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="col-sm-12">
     <button class="btn btn-primary" type="submit">Submit</button>

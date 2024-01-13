@@ -16,7 +16,8 @@ export class DataFormComponent implements OnInit {
   estados: Observable<EstadoBr[]> =  new Observable();
   cargos?: any[];
   tecnologias?: any[];
-  newsletters?: any[]
+  newsletters?: any[];
+  frameworks: string[] = ['Angular', 'React', 'Vue', 'Sencha']
 
   constructor(
     private http: HttpClient,
@@ -43,7 +44,9 @@ export class DataFormComponent implements OnInit {
       }),
       cargo: [null],
       tecnologias: [null],
-      newsletter: ['s']
+      newsletter: ['s'],
+      termos: [null, [Validators.requiredTrue]],
+      frameworks: [null]
     });
   }
 
