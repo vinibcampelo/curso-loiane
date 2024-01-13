@@ -116,6 +116,17 @@
         </div>
       </div>
     </div>
+
+    <div class="col-sm-3">
+      <label for="frameworks">Frameworks</label>
+      <div id="frameworks row">
+        <div class="checkbox form-check form-check-inline col-sm-4"
+         formArrayName="frameworks" *ngFor="let framework of formulario.get('frameworks')?.value; let i = index;"></div>
+          <input class="form-check-input" [ngClass]="aplicaValidacao('frameworks')" type="checkbox" id="frameworks">
+          <label class="form-check-label">frameworks[i]</label>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="col-sm-12">
