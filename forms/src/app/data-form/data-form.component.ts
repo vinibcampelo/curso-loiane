@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br.model';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { Observable } from 'rxjs';
+import { FormValidations } from '../shared/form-validation';
 
 @Component({
   selector: 'app-data-form',
@@ -52,7 +53,7 @@ export class DataFormComponent implements OnInit {
 
   buildFrameworks() {
     const values = this.frameworks.map(v => new FormControl(false));
-    return this.formBuilder.array(values);
+    return this.formBuilder.array(values, FormValidations.requiredMinCheckBox(1));
   }
 
   getFrameworksControls() {
@@ -82,12 +83,11 @@ export class DataFormComponent implements OnInit {
     if(this.formulario.valid) {
       this.http.post('https://httpbin.org/post', JSON.stringify(valueSubmit))
       .subscribe({
-        next: (dados) => console.log(dados),
+        next: dados => console.log(dados),
         error: (error) => alert("Algo não esperado ocorreu"),
         complete: () => this.formulario.reset()
       });
     } else {
-      console.log('formulari invalido');
       // this.formulario.markAllAsTouched();
       this.verificaValidacoesForm(this.formulario)
     }
@@ -95,7 +95,6 @@ export class DataFormComponent implements OnInit {
 
   verificaValidacoesForm(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(campo => {
-      console.log(campo);
       const controle = formGroup.get(campo);
       controle?.markAsTouched();
 
