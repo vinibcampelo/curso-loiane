@@ -35,7 +35,7 @@ export class DataFormComponent implements OnInit {
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       email: [null, [Validators.required, Validators.email]],
       endereco: this.formBuilder.group({
-        cep: [null, [Validators.required]],
+        cep: [null, [Validators.required, FormValidations.cepValidator]],
         numero: [null, [Validators.required]],
         complemento: [null],
         rua: [null, [Validators.required]],
@@ -72,6 +72,8 @@ export class DataFormComponent implements OnInit {
 
   onSubmit(){
     let valueSubmit = Object.assign({}, this.formulario.value)
+    console.log(this.formulario);
+    
     valueSubmit = Object.assign(valueSubmit, {
       frameworks: valueSubmit.frameworks
       .map((v: any, i: any) => v ? this.frameworks[i] : null)

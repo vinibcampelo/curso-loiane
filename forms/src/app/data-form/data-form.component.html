@@ -28,7 +28,10 @@
       <input type="text" class="form-control" [ngClass]="aplicaValidacao('endereco.cep')"
       (blur)="consultaCep()" id="cep" formControlName="cep">
       <div class="invalid-feedback">
-        Favor informar um cep válido
+        Campo cep obrigatório!
+      </div>
+      <div *ngIf="!formulario.get('cep')?.hasError('cepInvalido')" class="invalid-feedback">
+        Cep inválido, favor digitar um cep válido.
       </div>
     </div>
   
