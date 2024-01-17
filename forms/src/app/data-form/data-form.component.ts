@@ -120,6 +120,10 @@ export class DataFormComponent implements OnInit {
     return ''    
   }
 
+  verificaRequired(campo: string) {
+    return this.formulario.get(campo)?.hasError('required')
+  }
+
   verificaInvalidTouched(campo: any):boolean {
     return campo.invalid && campo.touched;
   }
@@ -146,7 +150,6 @@ export class DataFormComponent implements OnInit {
   populaDadosForm(dados: any) {
     this.formulario.patchValue({
       endereco: {
-        cep: dados.cep,
         complemento: dados.complemento,
         rua: dados.logradouro,
         bairro: dados.bairro,
