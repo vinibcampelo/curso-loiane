@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br.model';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
@@ -34,6 +34,7 @@ export class DataFormComponent implements OnInit {
     this.formulario = formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       email: [null, [Validators.required, Validators.email]],
+      confirmarEmail: [null, [Validators.required ,FormValidations.equalsTo('asdasda')]],
       endereco: this.formBuilder.group({
         cep: [null, [Validators.required, FormValidations.cepValidator]],
         numero: [null, [Validators.required]],
@@ -112,6 +113,11 @@ export class DataFormComponent implements OnInit {
 
   aplicaValidacao(campo: string) {
     const campoForm = this.formulario.get(campo);
+    console.log(campo);
+
+    console.log('validTouched' + this.verificaInvalidTouched(campoForm));
+    (this.verificaInvalidTouched(campoForm))
+    
     if (this.verificaInvalidTouched(campoForm)) {
       return 'is-invalid'
     } else if(this.verificaValidTouched(campoForm)) {

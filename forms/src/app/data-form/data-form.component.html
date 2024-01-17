@@ -9,15 +9,27 @@
       </div>
     </div>
 
-    <div class="col-sm-12">
+    <div class="col-sm-6">
       <label for="email" class="col-form-label">Email</label>
-      <input class="form-control"  [ngClass]="aplicaValidacao('email')" id="validationEmail"
+      <input class="form-control"  [ngClass]="aplicaValidacao('email')" id="email"
       placeholder="nome@email.com" type="email" formControlName="email">
       <div class="invalid-feedback">
         Favor informar um e-mail
       </div>
       <div *ngIf="validaEmail()" class="invalid-feedback">
         Favor informar um e-mail válido
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <label for="confirmarEmail" class="col-form-label">Confirmar Email</label>
+      <input class="form-control"  [ngClass]="aplicaValidacao('confirmarEmail')" id="confirmarEmail"
+      placeholder="nome@email.com" type="email" formControlName="confirmarEmail">
+      <div class="invalid-feedback">
+        Favor informar um e-mail de confirmaçao
+      </div>
+      <div *ngIf="validaEmail()" class="invalid-feedback">
+        Favor informar um e-mail de confirmaçao válido
       </div>
     </div>
   </div>
