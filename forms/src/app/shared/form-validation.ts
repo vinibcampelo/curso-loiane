@@ -18,7 +18,6 @@ export class FormValidations {
     const cep = control.value;
     if(cep && cep !== '') {
       var validacep = /^[0-9]{8}$/;
-      console.log(validacep.test(cep))
       return validacep.test(cep) ? null : { cepInvalido: true }
     }
     return null;
@@ -26,16 +25,22 @@ export class FormValidations {
 
   static equalsTo(otherField: string) {
     const validator = (formControl: FormControl) => {
-      if (otherField == null) throw new Error('É necessário informar um campo.');
-      if(!formControl.root || !(<FormGroup> formControl.root).controls) return null;
-      console.log((<FormGroup> formControl.root));
+      if (otherField == null) {
+        throw new Error('É necessário informar um campo.');
+      }
 
-      const field = (<FormGroup> formControl.root).get(otherField);
+      if (!formControl.root || !(<FormGroup>formControl.root).controls) {
+        return null;
+      }
 
-      if(!field) throw new Error('É necessário informar um campo válido.');
+      const field = (<FormGroup>formControl.root).get(otherField);
 
-      if(field.value !== formControl.value) {
-        return { equalsTo: false }
+      if (!field) {
+        throw new Error('É necessário informar um campo válido.');
+      }
+
+      if (field.value !== formControl.value) {
+        return { equalsTo : otherField };
       }
 
       return null;

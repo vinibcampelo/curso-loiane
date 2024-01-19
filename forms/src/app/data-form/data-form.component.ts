@@ -34,7 +34,7 @@ export class DataFormComponent implements OnInit {
     this.formulario = formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       email: [null, [Validators.required, Validators.email]],
-      confirmarEmail: [null, [Validators.required ,FormValidations.equalsTo('asdasda')]],
+      confirmarEmail: [null, [Validators.required, FormValidations.equalsTo('email')]],
       endereco: this.formBuilder.group({
         cep: [null, [Validators.required, FormValidations.cepValidator]],
         numero: [null, [Validators.required]],
@@ -73,16 +73,12 @@ export class DataFormComponent implements OnInit {
 
   onSubmit(){
     let valueSubmit = Object.assign({}, this.formulario.value)
-    console.log(this.formulario);
-    
+
     valueSubmit = Object.assign(valueSubmit, {
       frameworks: valueSubmit.frameworks
       .map((v: any, i: any) => v ? this.frameworks[i] : null)
       .filter((v: any) => v !== null)
     })
-
-    console.log(valueSubmit)
-
     if(this.formulario.valid) {
       this.http.post('https://httpbin.org/post', JSON.stringify(valueSubmit))
       .subscribe({
@@ -113,10 +109,14 @@ export class DataFormComponent implements OnInit {
 
   aplicaValidacao(campo: string) {
     const campoForm = this.formulario.get(campo);
-    console.log(campo);
-
-    console.log('validTouched' + this.verificaInvalidTouched(campoForm));
-    (this.verificaInvalidTouched(campoForm))
+    if(campo === 'confirmarEmail' || campo === 'email') {
+      console.log(this.formulario);
+      console.log('(this.verificaInvalidTouched(campoForm)) ==' + (this.verificaInvalidTouched(campoForm)));
+      console.log('campo.invalid = ' + campoForm?.invalid);
+      
+    }
+    
+    
     
     if (this.verificaInvalidTouched(campoForm)) {
       return 'is-invalid'

@@ -25,11 +25,11 @@
       <label for="confirmarEmail" class="col-form-label">Confirmar Email</label>
       <input class="form-control"  [ngClass]="aplicaValidacao('confirmarEmail')" id="confirmarEmail"
       placeholder="nome@email.com" type="email" formControlName="confirmarEmail">
-      <div class="invalid-feedback">
+      <div *ngIf="verificaRequired('confirmarEmail')" class="invalid-feedback">
         Favor informar um e-mail de confirmaçao
       </div>
-      <div *ngIf="validaEmail()" class="invalid-feedback">
-        Favor informar um e-mail de confirmaçao válido
+      <div *ngIf="formulario.get('confirmarEmail')?.hasError('equalsTo')" class="invalid-feedback">
+        E-mails não são iguais
       </div>
     </div>
   </div>
