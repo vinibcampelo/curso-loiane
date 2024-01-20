@@ -11,13 +11,22 @@
 
     <div class="col-sm-6">
       <label for="email" class="col-form-label">Email</label>
-      <input class="form-control"  [ngClass]="aplicaValidacao('email')" id="email"
+      <input class="form-control" [ngClass]="'is-valid'"  [ngClass]="aplicaValidacao('email')" id="email"
       placeholder="nome@email.com" type="email" formControlName="email">
       <div class="invalid-feedback">
         Favor informar um e-mail
       </div>
       <div *ngIf="validaEmail()" class="invalid-feedback">
         Favor informar um e-mail válido
+      </div>
+      <div *ngIf="formulario.get('email')?.status === 'PENDING'" class="is-valid">
+        Validando e-mail
+      </div>
+      <div *ngIf="formulario.get('email')?.status === 'VALID'" class="is-valid">
+        E-mail Válido
+      </div>
+      <div *ngIf="formulario.get('email')?.hasError('emailExiste')" class="invalid-feedback">
+        E-mail já cadastrado
       </div>
     </div>
 
