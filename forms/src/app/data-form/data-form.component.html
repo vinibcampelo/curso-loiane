@@ -3,10 +3,8 @@
   <div class="row">
     <div class="col-sm-12">
       <label for="nome" class="col-form-label">Nome</label>
-        <input class="form-control"  [ngClass]="aplicaValidacao('nome')" id="validationName" placeholder="Nome" type="text" formControlName="nome">
-      <div class="invalid-feedback">
-        Favor informar o nome
-      </div>
+      <input class="form-control"  [ngClass]="aplicaValidacao('nome')" id="validationName" placeholder="Nome" type="text" formControlName="nome">
+      <app-error-msg [control]="$any(formulario.get('nome'))" label="Nome"></app-error-msg>
     </div>
 
     <div class="col-sm-6">
