@@ -35,9 +35,10 @@
       <div *ngIf="verificaRequired('confirmarEmail')" class="invalid-feedback">
         Favor informar um e-mail de confirmaçao
       </div>
-      <div *ngIf="formulario.get('confirmarEmail')?.hasError('equalsTo')" class="invalid-feedback">
+      <app-error-msg [control]="$any(formulario.get('confirmarEmail'))" label="Confirmar Email"></app-error-msg>
+      <!-- <div *ngIf="formulario.get('confirmarEmail')?.hasError('equalsTo')" class="invalid-feedback">
         E-mails não são iguais
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -45,21 +46,23 @@
     <div class="col-sm-3">
       <label for="cep" class="col-form-label">CEP</label>
       <input type="text" class="form-control" [ngClass]="aplicaValidacao('endereco.cep')"
-      (blur)="consultaCep()" id="cep" formControlName="cep">
-      <div *ngIf="verificaRequired('endereco.cep')" class="invalid-feedback">
+      id="cep" formControlName="cep">
+      <app-error-msg [control]="$any(formulario.get('endereco.cep'))" label="CEP"></app-error-msg>
+      <!-- <div *ngIf="verificaRequired('endereco.cep')" class="invalid-feedback">
         Campo cep obrigatório!
-      </div>
-      <div *ngIf="!formulario.get('cep')?.hasError('cepInvalido')" class="invalid-feedback">
+      </div> -->
+      <!-- <div *ngIf="!formulario.get('cep')?.hasError('cepInvalido')" class="invalid-feedback">
         Cep inválido, favor digitar um cep válido.
-      </div>
+      </div> -->
     </div>
   
     <div class="col-sm-3">
       <label for="numero" class="col-form-label">Número</label>
       <input type="text" class="form-control" [ngClass]="aplicaValidacao('endereco.numero')" id="numero" formControlName="numero">
-      <div class="invalid-feedback">
+      <app-error-msg [control]="$any(formulario.get('endereco.numero'))" label="Numero"></app-error-msg>
+      <!-- <div class="invalid-feedback">
         Favor informar um número válido
-      </div>
+      </div> -->
     </div>
   
     <div class="col-sm-6">
@@ -69,26 +72,29 @@
   
     <div class="col-sm-12">
       <label for="rua" class="col-form-label">Rua</label>
-        <input class="form-control" [ngClass]="aplicaValidacao('endereco.rua')" id="rua" type="text" formControlName="rua">
-      <div class="invalid-feedback">
+      <input class="form-control" [ngClass]="aplicaValidacao('endereco.rua')" id="rua" type="text" formControlName="rua">
+      <app-error-msg [control]="$any(formulario.get('endereco.rua'))" label="Rua"></app-error-msg>
+      <!-- <div class="invalid-feedback">
         Favor informar a rua
-      </div>
+      </div> -->
     </div>
   
     <div class="col-sm-5">
       <label for="bairro" class="col-form-label">Bairro</label>
-        <input class="form-control" id="bairro" [ngClass]="aplicaValidacao('endereco.bairro')" type="text" formControlName="bairro">
-      <div class="invalid-feedback">
+      <input class="form-control" id="bairro" [ngClass]="aplicaValidacao('endereco.bairro')" type="text" formControlName="bairro">
+      <app-error-msg [control]="$any(formulario.get('endereco.bairro'))" label="Bairro"></app-error-msg>
+        <!-- <div class="invalid-feedback">
         Favor informar o bairro
-      </div>
+      </div> -->
     </div>
     
     <div class="col-sm-4">
       <label for="cidade" class="col-form-label">Cidade</label>
-        <input class="form-control" [ngClass]="aplicaValidacao('endereco.cidade')" id="cidade" type="text" formControlName="cidade">
-      <div class="invalid-feedback">
+      <input class="form-control" [ngClass]="aplicaValidacao('endereco.cidade')" id="cidade" type="text" formControlName="cidade">
+      <app-error-msg [control]="$any(formulario.get('endereco.cidade'))" label="Cidade"></app-error-msg>
+      <!-- <div class="invalid-feedback">
         Favor informar o cidade
-      </div>
+      </div> -->
     </div>
   
     <div class="col-sm-3">
@@ -96,9 +102,10 @@
         <select class="form-select" [ngClass]="aplicaValidacao('endereco.estado')" id="estado" formControlName="estado">
           <option *ngFor="let estado of estados | async" [value]="estado.sigla">{{ estado.nome }}</option>
         </select>
-      <div class="invalid-feedback">
+      <app-error-msg [control]="$any(formulario.get('endereco.estado'))" label="Estado"></app-error-msg>
+      <!-- <div class="invalid-feedback">
         Favor informar o estado
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -133,9 +140,11 @@
       <div class="checkbox form-check form-check-inline">
         <input class="form-check-input" formControlName="termos"[ngClass]="aplicaValidacao('termos')" type="checkbox" id="termos">
         <label class="form-check-label" >Aceito os termos</label>
-        <div class="invalid-feedback">
+        <app-error-msg [control]="$any(formulario.get('termos'))" label="Aceito os termos"></app-error-msg>
+
+        <!-- <div class="invalid-feedback">
           Por favor, aceite os termos.
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -149,9 +158,11 @@
             [formControlName]="i" [ngClass]="aplicaValidacao('frameworks')" type="checkbox"> {{ frameworks[i] }}
           </label>
         </div>
-        <div class="invalid-feedback">
+        <app-error-msg [control]="$any(formulario.get('frameworks'))" label="Framework"></app-error-msg>
+
+        <!-- <div class="invalid-feedback">
           Selecione uma opção.
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

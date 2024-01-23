@@ -4,7 +4,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br.model';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
-import { Observable, map } from 'rxjs';
+import { Observable, distinctUntilChanged, empty, map, switchMap, tap } from 'rxjs';
 import { FormValidations } from '../shared/form-validation';
 import { VerificaEmailService } from './services/verifica-email.service';
 
@@ -51,6 +51,21 @@ export class DataFormComponent implements OnInit {
       newsletter: ['s'],
       termos: [null, [Validators.requiredTrue]],
       frameworks: this.buildFrameworks()
+    });
+
+    this.formulario.get('endereco.cep')?.statusChanges
+      .pipe(
+        distinctUntilChanged(),
+        tap( value => console.log('status do cep: ' +  value)),
+        // switchMap(status => status ==='VALID' ?
+        //   this.cepService.consultaCep(this.formulario.get('endereco.cep')?.value): empty()
+        // )
+      )
+      .subscribe(status =>{
+        if(status==='VALID') {
+          this.cepService.consultaCep(this.formulario.get('endereco.cep')?.value)?.
+          subscribe(dados => this.populaDadosForm(dados));
+        }
     });
   }
 
