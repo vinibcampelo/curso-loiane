@@ -1,11 +1,16 @@
 <form class="row g-2 " [formGroup]="formulario" (ngSubmit)="onSubmit()">
   
   <div class="row">
-    <div class="col-sm-12">
+
+    <app-input-field formControlName="nome"
+    [classeCss]="aplicaValidacao('nome')" formControlName="nome"
+    id="nome" label="Nome" [control]="$any(formulario.get('nome'))"></app-input-field>
+
+    <!-- <div class="col-sm-12">
       <label for="nome" class="col-form-label">Nome</label>
       <input class="form-control"  [ngClass]="aplicaValidacao('nome')" id="validationName" placeholder="Nome" type="text" formControlName="nome">
       <app-error-msg [control]="$any(formulario.get('nome'))" label="Nome"></app-error-msg>
-    </div>
+    </div> -->
 
     <div class="col-sm-6">
       <label for="email" class="col-form-label">Email</label>
