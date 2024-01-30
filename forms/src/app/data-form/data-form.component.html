@@ -93,21 +93,32 @@
       </div> -->
     </div>
     
-    <div class="col-sm-4">
-      <label for="cidade" class="col-form-label">Cidade</label>
-      <input class="form-control" [ngClass]="aplicaValidacao('endereco.cidade')" id="cidade" type="text" formControlName="cidade">
-      <app-error-msg [control]="$any(formulario.get('endereco.cidade'))" label="Cidade"></app-error-msg>
-      <!-- <div class="invalid-feedback">
-        Favor informar o cidade
-      </div> -->
-    </div>
-  
     <div class="col-sm-3">
       <label for="estado" class="col-form-label">Estado</label>
         <select class="form-select" [ngClass]="aplicaValidacao('endereco.estado')" id="estado" formControlName="estado">
-          <option *ngFor="let estado of estados | async" [value]="estado.sigla">{{ estado.nome }}</option>
+          <option *ngFor="let estado of estados" [value]="estado.sigla">{{ estado.nome }}</option>
         </select>
       <app-error-msg [control]="$any(formulario.get('endereco.estado'))" label="Estado"></app-error-msg>
+      <!-- <div class="invalid-feedback">
+        Favor informar o estado
+      </div> -->
+    </div>
+
+    <!-- <div class="col-sm-4">
+      <label for="cidade" class="col-form-label">Cidade</label>
+      <input class="form-control" [ngClass]="aplicaValidacao('endereco.cidade')" id="cidade" type="text" formControlName="cidade">
+      <app-error-msg [control]="$any(formulario.get('endereco.cidade'))" label="Cidade"></app-error-msg>
+      <div class="invalid-feedback">
+        Favor informar o cidade
+      </div>
+    </div> -->
+    
+    <div class="col-sm-4">
+      <label for="cidade" class="col-form-label">Cidade</label>
+        <select class="form-select" [ngClass]="aplicaValidacao('endereco.cidade')" id="cidade" formControlName="cidade">
+          <option *ngFor="let cidade of cidades" [value]="cidade.nome">{{ cidade.nome }}</option>
+        </select>
+      <app-error-msg [control]="$any(formulario.get('endereco.cidade'))" label="Cidade"></app-error-msg>
       <!-- <div class="invalid-feedback">
         Favor informar o estado
       </div> -->
