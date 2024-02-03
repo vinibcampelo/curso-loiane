@@ -13,7 +13,7 @@ content-type: application/json
 }
 
 ###
-PUT http://localhost:3000/cursos/9617 HTTP/1.1
+PUT http://localhost:3000/cursos/c781 HTTP/1.1
 content-type: application/json
 
 {
